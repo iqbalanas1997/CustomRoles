@@ -12,3 +12,4 @@ E:\iqbal anas\testing\CustomRoles\obj\Debug\net5.0\CustomRoles.dll
 E:\iqbal anas\testing\CustomRoles\obj\Debug\net5.0\ref\CustomRoles.dll
 E:\iqbal anas\testing\CustomRoles\obj\Debug\net5.0\CustomRoles.pdb
 E:\iqbal anas\testing\CustomRoles\obj\Debug\net5.0\CustomRoles.genruntimeconfig.cache
+E:\iqbal anas\testing\CustomRoles\obj\Debug\net5.0\CustomRoles.csprojAssemblyReference.cache
