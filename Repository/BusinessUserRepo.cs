@@ -66,6 +66,19 @@ namespace CustomRoles.Repository
             return (_context.BusinessUserRole.Where(x => x.UserId == userId && x.RoleId == roleId).FirstOrDefault());
         }
 
+
+
+
+        public async Task<List<BusinessUserRoles>> IsRoleSelected(string userId)
+        {
+
+            List<BusinessUserRoles> businessUserRoles = _context.BusinessUserRole
+            .Include(bur => bur.BusinessRoles)
+            .Where(bur => bur.UserId == userId).ToList();
+
+            return businessUserRoles;
+        }
+        
         public async Task<ApplicationUser> GetUser(string userId)
         {
             return (await _userManager.FindByIdAsync(userId));
@@ -97,10 +110,12 @@ namespace CustomRoles.Repository
             return (await _context.BusinessRoles.Where(x => x.BusinessId == id).ToListAsync());
         }
 
-        public async Task<List<BusinessUserRoles>> CreateBusinessUserRoles(List<ManageBusinessUserRoleVM> businessUserRolesVM)
+        public async Task<List<BusinessUserRoles>> CreateBusinessUserRoles(List<ManageBusinessUserRoleVM> businessUserRolesVM, List<BusinessUserRoles> SelectedRoles)
         {
             for (int i = 0; i < businessUserRolesVM.Count; i++)
             {
+               
+               
                 if (businessUserRolesVM[i].selected == true)
                 {
                     BusinessUserRoles bUserRole = new()
@@ -108,15 +123,72 @@ namespace CustomRoles.Repository
                         UserId = businessUserRolesVM[i].userId,
                         RoleId = businessUserRolesVM[i].roleId
                     };
-                    _context.BusinessUserRole.Add(bUserRole);
+
+
+                    var b = SelectedRoles.Where(s => s.RoleId == bUserRole.RoleId).FirstOrDefault();
+                    if (b == null)
+                    {
+                        _context.BusinessUserRole.Add(bUserRole);
+
+                    }
+                    else
+                    {
+                        foreach (BusinessUserRoles manageBusinessUserRole in SelectedRoles)
+                        {
+                            var a = SelectedRoles.Where(s => s.RoleId == bUserRole.RoleId).FirstOrDefault();
+                            if (a == null)
+                            {
+                                _context.BusinessUserRole.Add(bUserRole);
+                            }
+                           
+                        }
+                    }
 
                 }
-            }
+               
+                }
 
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
             return null;
 
         }
+
+
+        public async Task<List<BusinessUserRoles>> DeleteBusinessUserRoles(List<ManageBusinessUserRoleVM> businessUserRolesVM, List<BusinessUserRoles> isSelect)
+        {
+
+
+
+            for (int i = 0; i < businessUserRolesVM.Count; i++)
+            {
+                if (businessUserRolesVM[i].selected == false)
+                {
+                    BusinessUserRoles bUserRole = new()
+                    {
+                        
+                        UserId = businessUserRolesVM[i].userId,
+                        RoleId = businessUserRolesVM[i].roleId
+                    };
+
+
+                    foreach (BusinessUserRoles manageBusinessUserRole in isSelect)
+                    {
+                        var a = isSelect.Where(s => s.RoleId == bUserRole.RoleId).FirstOrDefault();
+                        if (a != null)
+                        {
+                            _context.BusinessUserRole.Remove(a);
+                        }
+                     
+                    }
+
+                }
+                await _context.SaveChangesAsync();
+            }
+            return null;
+
+        }
+
+
 
 
 
@@ -214,7 +286,6 @@ namespace CustomRoles.Repository
             return _context.ApplicationUser.Any(e => e.Id == id);
         }
 
-
-
+       
     }
 }

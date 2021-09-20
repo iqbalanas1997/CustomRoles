@@ -8,7 +8,7 @@ namespace CustomRoles.Infrastructure
 {
     public interface IBusinessUserRepo
     {
-        Task<List<BusinessUserRoles>> CreateBusinessUserRoles(List<ManageBusinessUserRoleVM> businessUserRolesVM);
+        Task<List<BusinessUserRoles>> CreateBusinessUserRoles(List<ManageBusinessUserRoleVM> businessUserRolesVM, List<BusinessUserRoles> SelectedRoles);
         void Delete(ApplicationUser applicationUser);
         Task<List<ApplicationUser>> GetAll();
         Task<List<BusinessRoles>> GetAllBusinessRoles();
@@ -22,5 +22,8 @@ namespace CustomRoles.Infrastructure
         void Save();
         Task<ApplicationUser> Update(string id, [Bind(new[] { "Id,UserName,Email,PhoneNumber,BusinessId" })] ApplicationUser applicationUser);
         Task<List<ApplicationUser>> UsersGetByBusinessId(int id);
+        Task<List<BusinessUserRoles>> IsRoleSelected(string userId);
+
+        Task<List<BusinessUserRoles>> DeleteBusinessUserRoles(List<ManageBusinessUserRoleVM> businessUserRolesVM, List<BusinessUserRoles> isSelect);
     }
 }

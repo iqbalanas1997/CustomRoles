@@ -35,7 +35,7 @@ namespace CustomRoles.Repository
 
         }
 
-        public async Task<List<BusinessRolePermissions>> CreateRolesPermissions(List<RoleActionVM> roleActionVM)
+        public async Task<List<BusinessRolePermissions>> CreateRolesPermissions(List<RoleActionVM> roleActionVM, List<BusinessRolePermissions> isSelectedPage, int roleId)
         {
             for (int i = 0; i < roleActionVM.Count; i++)
             {
@@ -46,15 +46,80 @@ namespace CustomRoles.Repository
                         ActionId = roleActionVM[i].Id,
                         RoleId = roleActionVM[i].RoleId
                     };
-                    _context.BusinessRolePermissions.Add(brolePremissions);
+
+
+                    var RolePermissions = isSelectedPage.Where(s => s.ActionId == brolePremissions.ActionId).FirstOrDefault();
+                    if (RolePermissions == null )
+                    {
+                        _context.BusinessRolePermissions.Add(brolePremissions);
+
+                    }
+                    else
+                    {
+                        foreach (BusinessRolePermissions BusinessUserRolePermission in isSelectedPage)
+                        {
+                           
+                            var action = isSelectedPage.Where(s => s.ActionId == brolePremissions.ActionId).Where(r=>r.RoleId == brolePremissions.RoleId).FirstOrDefault();
+                            if (action == null )
+                            {
+                               
+                                    _context.BusinessRolePermissions.Add(brolePremissions);
+                              
+                            }
+
+                        }
+                    }
+
 
                 }
             }
 
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
             return null;
 
         }
+
+
+
+
+
+        public async Task<List<BusinessRolePermissions>> DeleteRolesPermissions(List<RoleActionVM> roleActionVM, List<BusinessRolePermissions> isSelectedPage)
+        {
+            for (int i = 0; i < roleActionVM.Count; i++)
+            {
+                if (roleActionVM[i].Selected == false)
+                {
+                    BusinessRolePermissions brolePremissions = new()
+                    {
+                        ActionId = roleActionVM[i].Id,
+                        RoleId = roleActionVM[i].RoleId
+                    };
+
+                        foreach (BusinessRolePermissions BusinessUserRolePermission in isSelectedPage)
+                        {
+
+                            var action = isSelectedPage.Where(s => s.ActionId == brolePremissions.ActionId).Where(r => r.RoleId == brolePremissions.RoleId).FirstOrDefault();
+                            if (action != null)
+                            {
+                                _context.BusinessRolePermissions.Remove(action);
+
+                            }
+
+                        }
+                 
+
+
+                }
+            }
+
+            await _context.SaveChangesAsync();
+            return null;
+
+        }
+
+
+
+
 
         public BusinessRoles GetById(int Id)
         {
@@ -143,7 +208,16 @@ namespace CustomRoles.Repository
         }
 
 
+        public async Task<List<BusinessRolePermissions>> IsPageSelected()
+        {
 
+            List<BusinessRolePermissions> businessUserRolesPermission = _context.BusinessRolePermissions
+            .Include(bur => bur.BusinessRoles).Include(bup => bup.Actions).ToList();
+
+         //   List<BusinessRolePermissions> businessUserRolesPermission = await _context.BusinessRolePermissions.ToListAsync();
+
+            return businessUserRolesPermission;
+        }
 
 
 
