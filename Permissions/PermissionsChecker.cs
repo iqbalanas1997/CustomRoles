@@ -24,6 +24,7 @@ namespace CustomRoles.Permissions
         }
         public async Task<String> AccessToUser(string loggedInUserId, HttpContext context)
         {
+
             List<BusinessUserRoles> businessUserRoles =  _context.BusinessUserRole
        .Include(bur => bur.BusinessRoles)
        .ThenInclude(br => br.BusinessRolePermissions)
@@ -35,8 +36,12 @@ namespace CustomRoles.Permissions
 
             for (int i = 0; i < businessUserRoles.Count; i++)
             {
-                pagePermissions.Add(businessUserRoles[i].BusinessRoles.BusinessRolePermissions[i].Actions.Page.Name + businessUserRoles[i].BusinessRoles.BusinessRolePermissions[i].Actions.ActionName);
-            }
+                for (int j = 0; j < businessUserRoles[i].BusinessRoles.BusinessRolePermissions.Count; j++)
+                {
+                    pagePermissions.Add(businessUserRoles[i].BusinessRoles.BusinessRolePermissions[j].Actions.Page.Name + businessUserRoles[i].BusinessRoles.BusinessRolePermissions[j].Actions.ActionName);
+                }
+                   // pagePermissions.Add(businessUserRoles[i].BusinessRoles.BusinessRolePermissions[i].Actions.Page.Name + businessUserRoles[i].BusinessRoles.BusinessRolePermissions[i].Actions.ActionName);
+            };
             UserSession sess = new UserSession();
             sess.PagePermissions = pagePermissions;
             context.Session.SetObjectAsJson("userObject", sess);
