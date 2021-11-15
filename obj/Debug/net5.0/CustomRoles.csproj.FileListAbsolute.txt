@@ -13,3 +13,48 @@ E:\iqbal anas\testing\CustomRoles\obj\Debug\net5.0\ref\CustomRoles.dll
 E:\iqbal anas\testing\CustomRoles\obj\Debug\net5.0\CustomRoles.pdb
 E:\iqbal anas\testing\CustomRoles\obj\Debug\net5.0\CustomRoles.genruntimeconfig.cache
 E:\iqbal anas\testing\CustomRoles\obj\Debug\net5.0\CustomRoles.csprojAssemblyReference.cache
+E:\iqbal anas\new\EProcurment Project\CustomRoles\bin\Debug\net5.0\CustomRoles.deps.json
+E:\iqbal anas\new\EProcurment Project\CustomRoles\bin\Debug\net5.0\CustomRoles.runtimeconfig.json
+E:\iqbal anas\new\EProcurment Project\CustomRoles\bin\Debug\net5.0\CustomRoles.runtimeconfig.dev.json
+E:\iqbal anas\new\EProcurment Project\CustomRoles\bin\Debug\net5.0\CustomRoles.dll
+E:\iqbal anas\new\EProcurment Project\CustomRoles\bin\Debug\net5.0\ref\CustomRoles.dll
+E:\iqbal anas\new\EProcurment Project\CustomRoles\bin\Debug\net5.0\CustomRoles.pdb
+E:\iqbal anas\new\EProcurment Project\CustomRoles\obj\Debug\net5.0\CustomRoles.csprojAssemblyReference.cache
+E:\iqbal anas\new\EProcurment Project\CustomRoles\obj\Debug\net5.0\CustomRoles.GeneratedMSBuildEditorConfig.editorconfig
+E:\iqbal anas\new\EProcurment Project\CustomRoles\obj\Debug\net5.0\CustomRoles.AssemblyInfoInputs.cache
+E:\iqbal anas\new\EProcurment Project\CustomRoles\obj\Debug\net5.0\CustomRoles.AssemblyInfo.cs
+E:\iqbal anas\new\EProcurment Project\CustomRoles\obj\Debug\net5.0\CustomRoles.csproj.CoreCompileInputs.cache
+E:\iqbal anas\new\EProcurment Project\CustomRoles\obj\Debug\net5.0\CustomRoles.dll
+E:\iqbal anas\new\EProcurment Project\CustomRoles\obj\Debug\net5.0\ref\CustomRoles.dll
+E:\iqbal anas\new\EProcurment Project\CustomRoles\obj\Debug\net5.0\CustomRoles.pdb
+E:\iqbal anas\new\EProcurment Project\CustomRoles\obj\Debug\net5.0\CustomRoles.genruntimeconfig.cache
+E:\iqbal anas\backup\test for wf\EProcurment Project\CustomRoles\bin\Debug\net5.0\CustomRoles.deps.json
+E:\iqbal anas\backup\test for wf\EProcurment Project\CustomRoles\bin\Debug\net5.0\CustomRoles.runtimeconfig.json
+E:\iqbal anas\backup\test for wf\EProcurment Project\CustomRoles\bin\Debug\net5.0\CustomRoles.runtimeconfig.dev.json
+E:\iqbal anas\backup\test for wf\EProcurment Project\CustomRoles\bin\Debug\net5.0\CustomRoles.dll
+E:\iqbal anas\backup\test for wf\EProcurment Project\CustomRoles\bin\Debug\net5.0\ref\CustomRoles.dll
+E:\iqbal anas\backup\test for wf\EProcurment Project\CustomRoles\bin\Debug\net5.0\CustomRoles.pdb
+E:\iqbal anas\backup\test for wf\EProcurment Project\CustomRoles\obj\Debug\net5.0\CustomRoles.csprojAssemblyReference.cache
+E:\iqbal anas\backup\test for wf\EProcurment Project\CustomRoles\obj\Debug\net5.0\CustomRoles.GeneratedMSBuildEditorConfig.editorconfig
+E:\iqbal anas\backup\test for wf\EProcurment Project\CustomRoles\obj\Debug\net5.0\CustomRoles.AssemblyInfoInputs.cache
+E:\iqbal anas\backup\test for wf\EProcurment Project\CustomRoles\obj\Debug\net5.0\CustomRoles.AssemblyInfo.cs
+E:\iqbal anas\backup\test for wf\EProcurment Project\CustomRoles\obj\Debug\net5.0\CustomRoles.csproj.CoreCompileInputs.cache
+E:\iqbal anas\backup\test for wf\EProcurment Project\CustomRoles\obj\Debug\net5.0\CustomRoles.dll
+E:\iqbal anas\backup\test for wf\EProcurment Project\CustomRoles\obj\Debug\net5.0\ref\CustomRoles.dll
+E:\iqbal anas\backup\test for wf\EProcurment Project\CustomRoles\obj\Debug\net5.0\CustomRoles.pdb
+E:\iqbal anas\backup\test for wf\EProcurment Project\CustomRoles\obj\Debug\net5.0\CustomRoles.genruntimeconfig.cache
+E:\iqbal anas\backup E-Procurement\Under Development\EProcurment Project\CustomRoles\bin\Debug\net5.0\CustomRoles.deps.json
+E:\iqbal anas\backup E-Procurement\Under Development\EProcurment Project\CustomRoles\bin\Debug\net5.0\CustomRoles.runtimeconfig.json
+E:\iqbal anas\backup E-Procurement\Under Development\EProcurment Project\CustomRoles\bin\Debug\net5.0\CustomRoles.runtimeconfig.dev.json
+E:\iqbal anas\backup E-Procurement\Under Development\EProcurment Project\CustomRoles\bin\Debug\net5.0\CustomRoles.dll
+E:\iqbal anas\backup E-Procurement\Under Development\EProcurment Project\CustomRoles\bin\Debug\net5.0\ref\CustomRoles.dll
+E:\iqbal anas\backup E-Procurement\Under Development\EProcurment Project\CustomRoles\bin\Debug\net5.0\CustomRoles.pdb
+E:\iqbal anas\backup E-Procurement\Under Development\EProcurment Project\CustomRoles\obj\Debug\net5.0\CustomRoles.csprojAssemblyReference.cache
+E:\iqbal anas\backup E-Procurement\Under Development\EProcurment Project\CustomRoles\obj\Debug\net5.0\CustomRoles.GeneratedMSBuildEditorConfig.editorconfig
+E:\iqbal anas\backup E-Procurement\Under Development\EProcurment Project\CustomRoles\obj\Debug\net5.0\CustomRoles.AssemblyInfoInputs.cache
+E:\iqbal anas\backup E-Procurement\Under Development\EProcurment Project\CustomRoles\obj\Debug\net5.0\CustomRoles.AssemblyInfo.cs
+E:\iqbal anas\backup E-Procurement\Under Development\EProcurment Project\CustomRoles\obj\Debug\net5.0\CustomRoles.csproj.CoreCompileInputs.cache
+E:\iqbal anas\backup E-Procurement\Under Development\EProcurment Project\CustomRoles\obj\Debug\net5.0\CustomRoles.dll
+E:\iqbal anas\backup E-Procurement\Under Development\EProcurment Project\CustomRoles\obj\Debug\net5.0\ref\CustomRoles.dll
+E:\iqbal anas\backup E-Procurement\Under Development\EProcurment Project\CustomRoles\obj\Debug\net5.0\CustomRoles.pdb
+E:\iqbal anas\backup E-Procurement\Under Development\EProcurment Project\CustomRoles\obj\Debug\net5.0\CustomRoles.genruntimeconfig.cache

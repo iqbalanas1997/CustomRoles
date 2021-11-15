@@ -30,6 +30,7 @@ namespace CustomRoles.Controllers
 
 
 
+
                 //SessionExtension.GetObjectFromJson<UserSession>(HttpContext.Session, "userObject");
                 var a = HttpContext.Session.GetObjectFromJson<UserSession>("userObject");
                 for (int i = 0; i < a.PagePermissions.Count; i++)

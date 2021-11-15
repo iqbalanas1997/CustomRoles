@@ -9598,11 +9598,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\iqbal anas\\testing\\CustomRoles\\CustomRoles.csproj",
+      "projectUniqueName": "E:\\iqbal anas\\backup E-Procurement\\Under Development\\EProcurment Project\\CustomRoles\\CustomRoles.csproj",
       "projectName": "CustomRoles",
-      "projectPath": "E:\\iqbal anas\\testing\\CustomRoles\\CustomRoles.csproj",
+      "projectPath": "E:\\iqbal anas\\backup E-Procurement\\Under Development\\EProcurment Project\\CustomRoles\\CustomRoles.csproj",
       "packagesPath": "C:\\Users\\AAG\\.nuget\\packages\\",
-      "outputPath": "E:\\iqbal anas\\testing\\CustomRoles\\obj\\",
+      "outputPath": "E:\\iqbal anas\\backup E-Procurement\\Under Development\\EProcurment Project\\CustomRoles\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

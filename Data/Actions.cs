@@ -12,7 +12,7 @@ namespace CustomRoles.Data
         public int Id { get; set; }
 
         public int PageId { get; set; }
-
+        public bool IsDeleted { get; set; }
         [Required(ErrorMessage = "Please Enter Action Name")]
         public string ActionName { get; set; }
 

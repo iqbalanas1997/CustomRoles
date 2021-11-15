@@ -26,46 +26,17 @@ namespace CustomRoles.Repository
         public void Delete(ApplicationUser applicationUser)
         {
             _context.ApplicationUser.Remove(applicationUser);
-        }
-
-        public void Save()
-        {
             _context.SaveChanges();
-
         }
 
-
-
-        public async Task<List<ApplicationUser>> GetAll()
+        public async void Save()
         {
-            return (await _context.ApplicationUser.ToListAsync());
+           await _context.SaveChangesAsync();
+
         }
 
-        public async Task<List<BusinessUserRoles>> GetAllBusinessUserRoles()
-        {
-            return (await _context.BusinessUserRole.ToListAsync());
-        }
 
-        public async Task<List<BusinessRoles>> GetAllBusinessRoles()
-        {
-            return (await _context.BusinessRoles.ToListAsync());
-        }
-
-        //public async Task<BusinessUserRole> GetBusinessUserRole(string userId)
-        //{
-        //    return await _context.BusinessUserRole.Where(x => x.UserId == userId).FirstOrDefault();
-        //}
-
-        //public async Task<BusinessUserRole> GetRolebyUserId(string userId,int roleId);
-        //{
-        //    return _context.BusinessUserRole.Where(x => x.UserId == userId).FirstOrDefault();
-        //}
-
-        public async Task<BusinessUserRoles> IsInRole(string userId, int roleId)
-        {
-            return (_context.BusinessUserRole.Where(x => x.UserId == userId && x.RoleId == roleId).FirstOrDefault());
-        }
-
+    
 
 
 
@@ -78,31 +49,12 @@ namespace CustomRoles.Repository
 
             return businessUserRoles;
         }
-        
-        public async Task<ApplicationUser> GetUser(string userId)
-        {
-            return (await _userManager.FindByIdAsync(userId));
-        }
+      
         public ApplicationUser GetById(string Id)
         {
             //var vendor = await _context.Vendor.FirstOrDefaultAsync(m => m.Id == id);
 
             return _context.ApplicationUser.Where(x => x.Id == Id).FirstOrDefault();
-        }
-        public Business GetBusinessByUserId(string id)
-        {
-            //var user = _context.ApplicationUser.Where(x => x.Id == id).FirstOrDefault();
-            //var businessId = user.BusinessId;
-            //return _context.Business.Where(x => x.Id == businessId).FirstOrDefault();
-
-
-            var user = _context.ApplicationUser.Include(a => a.Business).Where(x => x.Id == id).FirstOrDefault();
-            return user.Business;
-
-
-            //var user = _context.ApplicationUser.Include(a=>a.Business).ThenInclude(b=>b.BusinessLocations).Where(x => x.Id == id).FirstOrDefault();
-            //return user.Business;
-
         }
 
         public async Task<List<BusinessRoles>> GetAllBusinessRolesByBusinessId(int id)
@@ -177,18 +129,18 @@ namespace CustomRoles.Repository
                         if (a != null)
                         {
                             _context.BusinessUserRole.Remove(a);
+                          
                         }
-                     
+                       
                     }
-
+                   
                 }
-                await _context.SaveChangesAsync();
+             
             }
+            await _context.SaveChangesAsync();
             return null;
-
+            
         }
-
-
 
 
 
@@ -232,12 +184,17 @@ namespace CustomRoles.Repository
             return null;
         }
 
-
+        public async Task<ApplicationUser> GetUserById(string Id)
+        {
+            return _context.ApplicationUser.Where(x => x.Id == Id).FirstOrDefault();
+        }
 
         public async Task<Result> Insert([Bind("Id,UserName,Email,PhoneNumber,BusinessId,Password,ConfirmPassword")] BusinessUserVM businessUserVM)
         {
 
             Result r;
+
+
 
             //ApplicationUser appuser = new ApplicationUser()
             //{
@@ -249,10 +206,28 @@ namespace CustomRoles.Repository
             //};
 
             // ApplicationUser buEntity = _context.Add(appuser).Entity;
-            var user = new ApplicationUser { UserName = businessUserVM.UserName, Email = businessUserVM.Email, PhoneNumber = businessUserVM.PhoneNumber, BusinessId = businessUserVM.BusinessId };
+            var user = new ApplicationUser {
+                UserName = businessUserVM.UserName,
+                Email = businessUserVM.Email,
+                PhoneNumber = businessUserVM.PhoneNumber,
+                BusinessId = businessUserVM.BusinessId 
+            };
             IdentityResult result = await _userManager.CreateAsync(user, businessUserVM.Password);
 
 
+            var roleId = _context.DefaultRole.FromSqlRaw($"selectDefaultRoleId {businessUserVM.BusinessId}").ToList();
+
+            for (int i = 0; i < roleId.Count; i++)
+            {
+                var businessUserRole = new BusinessUserRoles
+                {
+                    UserId = user.Id,
+                    RoleId = roleId[i].Id
+                };
+                _context.BusinessUserRole.Add(businessUserRole);
+            }
+
+            await _context.SaveChangesAsync();
             if (result.Succeeded)
             {
 

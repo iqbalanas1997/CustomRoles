@@ -11,5 +11,6 @@ namespace CustomRoles.Data
         public int Id { get; set; }
         [Required(ErrorMessage = "Please Enter Path of page")]
         public string Name { get; set; }
+        public bool IsDeleted { get; set; }
     }
 }

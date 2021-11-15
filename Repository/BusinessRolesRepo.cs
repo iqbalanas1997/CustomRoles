@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace CustomRoles.Repository
@@ -24,10 +25,6 @@ namespace CustomRoles.Repository
             _context = context;
         }
 
-        public async Task<List<BusinessRoles>> GetAll()
-        {
-            return (await _context.BusinessRoles.ToListAsync());
-        }
 
         public async Task<List<Actions>> GetAllActions()
         {
@@ -49,7 +46,7 @@ namespace CustomRoles.Repository
 
 
                     var RolePermissions = isSelectedPage.Where(s => s.ActionId == brolePremissions.ActionId).FirstOrDefault();
-                    if (RolePermissions == null )
+                    if (RolePermissions == null)
                     {
                         _context.BusinessRolePermissions.Add(brolePremissions);
 
@@ -58,13 +55,13 @@ namespace CustomRoles.Repository
                     {
                         foreach (BusinessRolePermissions BusinessUserRolePermission in isSelectedPage)
                         {
-                           
-                            var action = isSelectedPage.Where(s => s.ActionId == brolePremissions.ActionId).Where(r=>r.RoleId == brolePremissions.RoleId).FirstOrDefault();
-                            if (action == null )
+
+                            var action = isSelectedPage.Where(s => s.ActionId == brolePremissions.ActionId).Where(r => r.RoleId == brolePremissions.RoleId).FirstOrDefault();
+                            if (action == null)
                             {
-                               
-                                    _context.BusinessRolePermissions.Add(brolePremissions);
-                              
+
+                                _context.BusinessRolePermissions.Add(brolePremissions);
+
                             }
 
                         }
@@ -78,10 +75,6 @@ namespace CustomRoles.Repository
             return null;
 
         }
-
-
-
-
 
         public async Task<List<BusinessRolePermissions>> DeleteRolesPermissions(List<RoleActionVM> roleActionVM, List<BusinessRolePermissions> isSelectedPage)
         {
@@ -95,18 +88,19 @@ namespace CustomRoles.Repository
                         RoleId = roleActionVM[i].RoleId
                     };
 
-                        foreach (BusinessRolePermissions BusinessUserRolePermission in isSelectedPage)
+                    foreach (BusinessRolePermissions BusinessUserRolePermission in isSelectedPage)
+                    {
+
+                        var action = isSelectedPage.Where(s => s.ActionId == brolePremissions.ActionId).Where(r => r.RoleId == brolePremissions.RoleId).FirstOrDefault();
+                        if (action != null)
                         {
+                            _context.BusinessRolePermissions.Remove(action);
 
-                            var action = isSelectedPage.Where(s => s.ActionId == brolePremissions.ActionId).Where(r => r.RoleId == brolePremissions.RoleId).FirstOrDefault();
-                            if (action != null)
-                            {
-                                _context.BusinessRolePermissions.Remove(action);
-
-                            }
 
                         }
-                 
+
+                    }
+
 
 
                 }
@@ -117,15 +111,14 @@ namespace CustomRoles.Repository
 
         }
 
-
-
-
-
         public BusinessRoles GetById(int Id)
         {
             return _context.BusinessRoles.Where(x => x.Id == Id).FirstOrDefault();
         }
 
+      
+
+       
 
         public async Task<List<BusinessRoles>> RolesGetByBusinessId(int id)
         {
@@ -134,19 +127,12 @@ namespace CustomRoles.Repository
             return await _context.BusinessRoles.Where(x => x.BusinessId == id).ToListAsync();
         }
 
-
-        public Business GetBusinessByUserId(string id)
-        {
-            var user = _context.ApplicationUser.Where(x => x.Id == id).FirstOrDefault();
-            var businessId = user.BusinessId;
-            return _context.Business.Where(x => x.Id == businessId).FirstOrDefault();
-
-        }
-
+ 
 
         public void DeleteRole(BusinessRoles businessRoles)
         {
             _context.BusinessRoles.Remove(businessRoles);
+            _context.SaveChanges();
 
         }
         public void SaveRole()
@@ -158,12 +144,11 @@ namespace CustomRoles.Repository
         public async Task<Result> CreateRole([Bind("Id,Name,Description,PageId,ActionId")] BusinessRoles businessRole)
         {
             Result r;
-
-
+            
             //IdentityResult result = 
             _context.BusinessRoles.Add(businessRole);
 
-            await _context.SaveChangesAsync();
+             _context.SaveChanges();
             r = new Result()
             {
                 response = "OK",
@@ -172,7 +157,6 @@ namespace CustomRoles.Repository
 
             return r;
         }
-
 
         public async Task<BusinessRoles> EditRole(BusinessRoles businessRoles)
         {
@@ -202,11 +186,6 @@ namespace CustomRoles.Repository
             return _context.BusinessRoles.Any(e => e.Id == id);
         }
 
-        public async Task<List<Business>> GetBusinessList()
-        {
-            return (await _context.Business.ToListAsync());
-        }
-
 
         public async Task<List<BusinessRolePermissions>> IsPageSelected()
         {
@@ -214,12 +193,16 @@ namespace CustomRoles.Repository
             List<BusinessRolePermissions> businessUserRolesPermission = _context.BusinessRolePermissions
             .Include(bur => bur.BusinessRoles).Include(bup => bup.Actions).ToList();
 
-         //   List<BusinessRolePermissions> businessUserRolesPermission = await _context.BusinessRolePermissions.ToListAsync();
+            //   List<BusinessRolePermissions> businessUserRolesPermission = await _context.BusinessRolePermissions.ToListAsync();
 
             return businessUserRolesPermission;
         }
 
-
-
+        public async Task<ApplicationUser> GetUserById(string Id)
+        {
+            return _context.ApplicationUser.Where(x=>x.Id == Id).FirstOrDefault();
+        }
     }
+
+
 }

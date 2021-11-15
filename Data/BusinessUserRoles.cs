@@ -12,7 +12,7 @@ namespace CustomRoles.Data
         public int Id { get; set; }
         public string UserId { get; set; }
         public int RoleId { get; set; }
-
+        public bool IsDeleted { get; set; }
         [ForeignKey("UserId")]
         public virtual ApplicationUser ApplicationUser { get; set; }
 

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 #nullable disable
 
@@ -16,7 +17,7 @@ namespace CustomRoles.Data
 
         public string Logo { get; set; }
         public string Website { get; set; }
-
+        public bool IsDeleted { get; set; }
         [Required(ErrorMessage = "Please enter Email ID")]
         [RegularExpression(@"^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$", ErrorMessage = "Email is not valid.")]
         public string Email { get; set; }
@@ -34,6 +35,7 @@ namespace CustomRoles.Data
         public int? VendorId { get; set; }
 
         public int StatusId { get; set; }
+
         public DateTime? DateAdded { get; set; }
 
       

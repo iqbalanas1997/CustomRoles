@@ -12,7 +12,7 @@ namespace CustomRoles.Data
         }
 
         public int? BusinessId { get; set; }
-
+        public bool IsDeleted { get; set; }
         [ForeignKey("BusinessId")]
         public virtual Business Business { get; set; }
 

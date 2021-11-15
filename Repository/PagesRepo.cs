@@ -39,6 +39,7 @@ namespace CustomRoles.Repository
         public void DeleteAction(Page pages)
         {
             _context.Pages.Remove(pages);
+            _context.SaveChanges();
 
         }
         public void SaveAction()

@@ -16,7 +16,7 @@ namespace CustomRoles.Data
         [Required(ErrorMessage = "Please Enter Role Name")]
         public string Name { get; set; }
         public string Description { get; set; }
-
+        public bool IsDeleted { get; set; }
         [ForeignKey("BusinessId")]
         public virtual Business Business { get; set; }
 

@@ -53,6 +53,7 @@ namespace CustomRoles.Repository
         public void DeleteAction(Actions actions)
         {
             _context.Actions.Remove(actions);
+            _context.SaveChanges();
 
         }
         public void SaveAction()

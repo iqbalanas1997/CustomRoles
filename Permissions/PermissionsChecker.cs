@@ -32,18 +32,39 @@ namespace CustomRoles.Permissions
        .ThenInclude(a => a.Page)
        .Where(bur => bur.UserId == loggedInUserId).ToList();
 
+            var Roles = new List<string>();
+            var RolesId = new List<int>();
             var pagePermissions = new List<String>();
-
+            int BusinessId = 0;
+           
             for (int i = 0; i < businessUserRoles.Count; i++)
             {
                 for (int j = 0; j < businessUserRoles[i].BusinessRoles.BusinessRolePermissions.Count; j++)
                 {
                     pagePermissions.Add(businessUserRoles[i].BusinessRoles.BusinessRolePermissions[j].Actions.Page.Name + businessUserRoles[i].BusinessRoles.BusinessRolePermissions[j].Actions.ActionName);
                 }
-                   // pagePermissions.Add(businessUserRoles[i].BusinessRoles.BusinessRolePermissions[i].Actions.Page.Name + businessUserRoles[i].BusinessRoles.BusinessRolePermissions[i].Actions.ActionName);
+
+                Roles.Add(businessUserRoles[i].BusinessRoles.Name);
+                RolesId.Add(businessUserRoles[i].BusinessRoles.Id);
+                BusinessId = businessUserRoles[i].BusinessRoles.BusinessId;
             };
+
+
             UserSession sess = new UserSession();
             sess.PagePermissions = pagePermissions;
+            sess.BusinessUserRoles = Roles;
+        
+            sess.BusinessUserRolesID = RolesId;
+            if (BusinessId == 0)
+            {
+              var user =  _context.ApplicationUser.Where(x => x.Id == loggedInUserId).FirstOrDefault();
+                sess.BusinessId = (int)user.BusinessId;
+            }
+            else
+            {
+                sess.BusinessId = BusinessId;
+            }
+             
             context.Session.SetObjectAsJson("userObject", sess);
             return null;
         }
