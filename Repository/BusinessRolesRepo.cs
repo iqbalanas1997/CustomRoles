@@ -202,6 +202,9 @@ namespace CustomRoles.Repository
         {
             return _context.ApplicationUser.Where(x=>x.Id == Id).FirstOrDefault();
         }
+      
+
+        
     }
 
 

@@ -1,4 +1,5 @@
 ﻿using CustomRoles.Data;
+using CustomRoles.Data.SPEntity;
 using CustomRoles.Data.ViewModels;
 using CustomRoles.Infrastructure;
 using Microsoft.AspNetCore.Identity;
@@ -196,16 +197,6 @@ namespace CustomRoles.Repository
 
 
 
-            //ApplicationUser appuser = new ApplicationUser()
-            //{
-            //    UserName = businessUserVM.UserName,
-            //    Email = businessUserVM.Email,
-            //    PhoneNumber = businessUserVM.PhoneNumber,
-            //    BusinessId = businessUserVM.BusinessId,
-            //    PasswordHash = businessUserVM.Password
-            //};
-
-            // ApplicationUser buEntity = _context.Add(appuser).Entity;
             var user = new ApplicationUser {
                 UserName = businessUserVM.UserName,
                 Email = businessUserVM.Email,
@@ -254,7 +245,13 @@ namespace CustomRoles.Repository
             }
             return r;
         }
-
+        public int getBusinessId(string id)
+        {
+            //var a = _context.GetBusinessId.FromSqlRaw($"SelectBusinessId {id}").ToList();
+            var a = _context.ApplicationUser.Where(x => x.Id == id).Select(b=>b.BusinessId).FirstOrDefault();
+            int bid = (int)a;
+            return bid;
+        }
 
         private bool BusinessUserExists(string id)
         {

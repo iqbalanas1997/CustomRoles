@@ -46,7 +46,9 @@ namespace CustomRoles.Data
         public virtual DbSet<Page> Pages { get; set; }
         public DbSet<Business> Business { get; set; }
 
+        //Fake Entities for Strored Proceudures
         public DbSet<DefaultRole> DefaultRole { get; set; }
+        public DbSet<GetBusinessId> GetBusinessId { get; set; }
 
         public override int SaveChanges()
         {
@@ -131,7 +133,10 @@ namespace CustomRoles.Data
                 // Migration will not be generated for this table
                 entity.ToView("DefaultRole", "dbo");
             });
-
+            modelBuilder.Entity<GetBusinessId>(entity => {
+                // Migration will not be generated for this table
+                entity.ToView("GetBusinessId", "dbo");
+            });
 
             modelBuilder.Entity<Actions>().HasQueryFilter(b => !b.IsDeleted);
             modelBuilder.Entity<ApplicationUser>().HasQueryFilter(b => !b.IsDeleted);

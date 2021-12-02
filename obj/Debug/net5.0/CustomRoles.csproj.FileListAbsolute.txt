@@ -49,7 +49,6 @@ E:\iqbal anas\backup E-Procurement\Under Development\EProcurment Project\CustomR
 E:\iqbal anas\backup E-Procurement\Under Development\EProcurment Project\CustomRoles\bin\Debug\net5.0\CustomRoles.dll
 E:\iqbal anas\backup E-Procurement\Under Development\EProcurment Project\CustomRoles\bin\Debug\net5.0\ref\CustomRoles.dll
 E:\iqbal anas\backup E-Procurement\Under Development\EProcurment Project\CustomRoles\bin\Debug\net5.0\CustomRoles.pdb
-E:\iqbal anas\backup E-Procurement\Under Development\EProcurment Project\CustomRoles\obj\Debug\net5.0\CustomRoles.csprojAssemblyReference.cache
 E:\iqbal anas\backup E-Procurement\Under Development\EProcurment Project\CustomRoles\obj\Debug\net5.0\CustomRoles.GeneratedMSBuildEditorConfig.editorconfig
 E:\iqbal anas\backup E-Procurement\Under Development\EProcurment Project\CustomRoles\obj\Debug\net5.0\CustomRoles.AssemblyInfoInputs.cache
 E:\iqbal anas\backup E-Procurement\Under Development\EProcurment Project\CustomRoles\obj\Debug\net5.0\CustomRoles.AssemblyInfo.cs
@@ -58,3 +57,4 @@ E:\iqbal anas\backup E-Procurement\Under Development\EProcurment Project\CustomR
 E:\iqbal anas\backup E-Procurement\Under Development\EProcurment Project\CustomRoles\obj\Debug\net5.0\ref\CustomRoles.dll
 E:\iqbal anas\backup E-Procurement\Under Development\EProcurment Project\CustomRoles\obj\Debug\net5.0\CustomRoles.pdb
 E:\iqbal anas\backup E-Procurement\Under Development\EProcurment Project\CustomRoles\obj\Debug\net5.0\CustomRoles.genruntimeconfig.cache
+E:\iqbal anas\backup E-Procurement\Under Development\EProcurment Project\CustomRoles\obj\Debug\net5.0\CustomRoles.csprojAssemblyReference.cache
